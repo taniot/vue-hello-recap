@@ -1,0 +1,12 @@
+/* proprietà per nascondere elementi prima del render di vue */
+[v-cloak] {
+  display: none;
+}
+
+.red {
+  color: red;
+}
+
+.big {
+  font-size: 5rem;
+}

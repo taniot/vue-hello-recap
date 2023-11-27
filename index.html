@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Hello</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <!-- Utilizziamo baffo per interpolare un valore nel DOM -->
+      <h1 class="red" :class="cssData">{{ title }}</h1>
+      <!-- <img v-bind:src="img" v-bind:alt="Ciao" /> -->
+      <!-- Utilizziamo V-BIND per agire su attributi HTML -->
+      <img :src="img" v-bind:alt="ciao" />
+      <!-- <input type="text" v-model="title" /> -->
+
+      <!-- Utilizziamo V-IF/V-ELSE-IF/V-ELSE per verificare condizioni e aggiungere/rimuovere elementi al DOM -->
+      <div v-if="verificaSeVero()">
+        Prova il nuovo fantastico V-IF non te ne pentirai
+      </div>
+      <p v-else>Non sto usando la prima condizione del V-IF</p>
+
+      <h2>ELSE IF</h2>
+      <div v-if="type === 'A'">A</div>
+      <div v-else-if="type === 'B'">B</div>
+      <div v-else-if="type === 'C'">C</div>
+      <div v-else>Not A/B/C</div>
+
+      <!-- Utilizziamo V-MODEL per collegare un elemento nel dom a un valore di data -->
+      <h2>CHANGE DIV VALUE</h2>
+      <select v-model="type">
+        <option value="A">Sono A</option>
+        <option value="B">Sono B</option>
+        <option value="C">Sono C</option>
+        <option value="ALTRO">Sono Altro</option>
+      </select>
+
+      <!-- Utilizziamo V-SHOW per mostrare/nascondere un elemento in funzione di una condizione -->
+
+      <h2>V-SHOW</h2>
+      <h3 v-show="type === 'A'">Sono elemento con V-show</h3>
+
+      <h2>V-FOR</h2>
+      <!-- Utilizziamo V-FOR per ciclare su un array di stringhe-->
+      <ul>
+        <li v-for="friend in friends">{{ friend }}</li>
+      </ul>
+      <!-- Utilizziamo V-FOR per ciclare su un array di oggetti-->
+      <div
+        v-for="(amico, index) in friendsObj"
+        :id="`id-${index}`"
+        v-show="index === 1"
+      >
+        <div>{{index}} - {{ amico.nome }} - Età: {{ amico.age }}</div>
+      </div>
+      <!-- Utilizziamo V-FOR per ciclare su un valore numerico-->
+      <h2>V-FOR numerico</h2>
+      <div v-for="antonio in nLoop">{{ antonio }}</div>
+    </div>
+    <!-- VueJS -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- /VueJS -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
